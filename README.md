@@ -1,110 +1,142 @@
 # 🏥 Healthcare AIML Project  
-**EDA • Supervised Learning • Anomaly Detection • AI Doctor Recommendation**
+**EDA • Machine Learning • Anomaly Detection • AI Medical Recommendation System**
 
-This project performs a complete end-to-end data science pipeline on a Healthcare dataset.  
-It includes Exploratory Data Analysis (EDA), supervised machine learning, anomaly detection, and an AI-generated medical recommendation system.
-
----
-
-# 📌 Project Overview
-
-This project demonstrates:
-
-- ✔ Data Cleaning & Preprocessing  
-- ✔ Exploratory Data Analysis (EDA)  
-- ✔ Supervised Learning (Predict Billing Amount)  
-- ✔ Unsupervised Anomaly Detection (Isolation Forest)  
-- ✔ AI Doctor Recommendation using patient attributes  
-- ✔ Model Saving + Prediction Script  
-- ✔ Clean project folder structure  
-
-The dataset used is publicly available on Kaggle.
+This project implements a full **end-to-end healthcare analytics pipeline** including data cleaning, exploratory data analysis, predictive modeling, anomaly detection, and an AI doctor-style recommendation generator.
 
 ---
 
-# 📁 Folder Structure
+## 📌 Project Features
+
+### ✔ Data Cleaning  
+- Handling missing values  
+- Label encoding for categorical variables  
+- Preparing dataset for ML  
+
+### ✔ Exploratory Data Analysis (EDA)  
+- Age distribution  
+- Billing amount analysis  
+- Medical condition frequency  
+- Admission type & medication insights  
+- Room number & hospital statistics  
+
+### ✔ Supervised Machine Learning  
+- Regression model using **Random Forest Regressor**  
+- Predicts *Billing Amount*  
+- Metrics used: MAE, RMSE, R²  
+
+### ✔ Unsupervised Learning  
+- **Isolation Forest** for anomaly detection in billing amounts  
+- Detects unusually high/low bills  
+
+### ✔ AI Doctor Recommendation System  
+Generates custom recommendations based on:  
+- Age  
+- Medical condition  
+- Medication  
+- Predicted billing amount  
+
+---
+
+## 📁 Folder Structure
 
 ```
-healthcare-project/
+healthcare-aiml-project/
 │
 ├── data/
-│     └── cleaned_healthcare.csv
+│   ├── cleaned_healthcare.csv
+│   └── DATASET_LINK.txt   ← (Google Drive download link)
 │
 ├── models/
-│     ├── rf_model_Billing_Amount.pkl
-│     └── label_encoders.pkl
+│   ├── rf_model_Billing_Amount.pkl
+│   └── label_encoders.pkl
 │
 ├── notebooks/
-│     └── healthcare_analysis.ipynb
+│   └── healthcare_analysis.ipynb
 │
 ├── scripts/
-│     ├── predict.py
-│     └── ai_recommendation.py
+│   ├── predict.py
+│   └── ai_recommendation.py
 │
 └── README.md
 ```
 
 ---
 
-# 📊 Task 1 — Exploratory Data Analysis (EDA)
+## 📦 Dataset & Download Link (Important)
 
-### Numerical Distributions Analyzed:
-- Age  
-- Billing Amount  
-- Room Number  
+GitHub cannot store large files (>25 MB).  
+Therefore, all data and ML models are available on **Google Drive**.
 
-### Categorical Distributions Visualized:
-- Medical Condition  
-- Admission Type  
-- Medication  
+### 📥 Download from Google Drive:
+🔗https://drive.google.com/drive/folders/1mn_dEBIL6ArEKozHDkvrp4gy-hZ3qJQ1?usp=drive_link
 
-The dataset contained **no missing values**, and all fields were clean and usable.
+### Included in Drive:
+- `cleaned_healthcare.csv`
+- `rf_model_Billing_Amount.pkl`
+- `label_encoders.pkl`
+- All scripts & notebooks used in development
 
----
-
-# 🤖 Task 2 — Supervised Machine Learning  
-### 🧪 Goal: Predict Billing Amount
-
-The original target `Test Results` contained **0% non-missing values**, so predicting it was impossible.  
-Therefore, the project used **Billing Amount** as a practical regression target.
-
-### Model Used:
-- **Random Forest Regressor (200 trees)**  
-- Label Encoding for categorical variables  
-- Train/Test Split: 80/20  
-
-### 📈 Evaluation Results
-- **MAE:** 11,229.38  
-- **RMSE:** 13,348.44  
-- **R² Score:** 0.104  
-
-> These metrics are expected because billing amounts vary widely and depend on unobserved hospital factors.  
-> The purpose is to demonstrate the workflow, not to achieve perfect prediction accuracy.
+After downloading, place them inside the folders as shown in the folder structure.
 
 ---
 
-# 🔍 Task 3 — Anomaly Detection (Billing Amount)
+## ⚙️ How to Run the Project
 
-### Method:
-- **Isolation Forest**  
-- Contamination: 2%  
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/YOUR_USERNAME/healthcare-aiml-project.git
+cd healthcare-aiml-project
+```
 
-### Output:
-- Anomalies = *Top 2% unusual billing records*  
-- These may indicate rare cases, long hospital stays, or potential billing irregularities.
+### 2️⃣ Install Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-The project visualizes anomalies on a scatter plot for easy review.
+If missing, install manually:
+```bash
+pip install pandas numpy scikit-learn matplotlib seaborn
+```
+
+### 3️⃣ Download Dataset + Models  
+Download from Google Drive and place into:
+
+```
+data/
+models/
+```
+
+### 4️⃣ Run the Notebook  
+Open:
+```
+notebooks/healthcare_analysis.ipynb
+```
+
+Run all steps for:
+- EDA  
+- ML predictions  
+- Anomaly detection  
+- AI recommendation  
 
 ---
 
-# 🧠 Task 4 — AI Doctor Recommendation
+## 🤖 Prediction Script Usage
 
-A lightweight AI generator produces a doctor-style recommendation using:
+### Run:
+```bash
+python scripts/predict.py
+```
 
-- Age  
-- Medical Condition  
-- Medication  
-- Predicted Billing Amount  
+Produces billing amount prediction based on sample or user-provided data.
+
+---
+
+## 🩺 AI Doctor Recommendation System
+
+Run:
+```bash
+python scripts/ai_recommendation.py
+```
 
 ### Example Output:
 ```
@@ -116,75 +148,30 @@ Medication: Aspirin
 Predicted Billing Amount: $29,403.14
 
 Recommendation:
-The predicted billing amount suggests moderate care intensity.
-Advise the patient to continue medication, maintain lifestyle habits,
-and schedule a follow-up check within 2–4 weeks.
+- Continue prescribed medication
+- Monitor symptoms regularly
+- Follow up in 2–4 weeks
+- Seek urgent attention if symptoms worsen
 
-If symptoms worsen — such as fatigue, breathing issues,
-irregular blood sugar levels, or unexpected side effects —
-seek immediate clinical attention.
+Lifestyle:
+- Balanced diet
+- Increase physical activity
+- Stay hydrated
 ```
 
 ---
 
-# 🛠 How to Run the Project
-
-### 1️⃣ Clone the Repository
-```
-git clone <your-repo-url>
-cd healthcare-project
-```
-
-### 2️⃣ Install Dependencies
-```
-pip install pandas numpy scikit-learn matplotlib seaborn
-```
-
-### 3️⃣ Open the Notebook
-Run this notebook for full analysis:
-```
-notebooks/healthcare_analysis.ipynb
-```
-
-### 4️⃣ Use the Prediction Script
-```
-python scripts/predict.py
-```
-
-### 5️⃣ Generate AI Doctor Recommendation
-```
-python scripts/ai_recommendation.py
-```
+## 📜 License
+This project is released under the **MIT License**, allowing use and modification for any purpose.
 
 ---
 
-# 📦 Requirements
-```
-pandas
-numpy
-scikit-learn
-matplotlib
-seaborn
-```
+## 🙌 Acknowledgements
+- Dataset from Kaggle  
+- Libraries: Pandas, NumPy, Matplotlib, Seaborn, Scikit-Learn  
 
 ---
 
-# 🎯 Final Notes
-This project demonstrates a complete AIML workflow suitable for:
-
-- Portfolio  
-- Job Applications  
-- Data Science Learning  
-- ML Engineering Practice  
-
-Feel free to extend the project with:
-- Feature engineering  
-- Better regression models  
-- SHAP explainability  
-- Flask / Streamlit app  
-
----
-
-# 📬 Contact
-For questions or collaboration, feel free to open an issue or connect.
-
+## ⭐ Support
+If you found this project useful, please **star the repository** ⭐  
+It helps support future enhancements!
