@@ -1,0 +1,14 @@
+This project uses a large dataset that cannot be uploaded to GitHub due to size limits.
+
+You can download the required dataset and model files from Google Drive:
+
+📁 Google Drive Folder:
+https://drive.google.com/drive/folders/1DXZXX7NrnZzQki7ClDBNxohEe_98YEkc?usp=drive_link
+
+Contents:
+- cleaned_healthcare.csv
+- rf_model_Billing_Amount.pkl
+- label_encoders.pkl
+- notebooks and scripts used in the project
+
+Please download files from the link above and place them in the matching folders when running the project locally.
